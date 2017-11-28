@@ -6,10 +6,12 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   sensor_msgs
   cv_bridge
+  dso
 )
 
-set(DSO_PATH $ENV{DSO_PATH})
-message("\n\n---- LOOKING FOR DSO at\n\"${DSO_PATH}\"")
+# set(DSO_PATH $ENV{DSO_PATH})
+# message("\n\n---- LOOKING FOR DSO at\n\"${DSO_PATH}\"")
+# find_library(DSO_LIBRARY dso ${DSO_PATH}/build/lib)
 
 
 find_package(Pangolin 0.2 REQUIRED)
@@ -22,7 +24,7 @@ message("---- FOUND OpenCV Libs at\n\"${OpenCV_LIBS}\"")
 
 find_package(Eigen3 REQUIRED)
 find_package(Boost COMPONENTS system thread)
-find_library(DSO_LIBRARY dso ${DSO_PATH}/build/lib)
+
 
 catkin_package(
   CATKIN_DEPENDS
@@ -42,8 +44,8 @@ set(CMAKE_CXX_FLAGS
 
 include_directories(
   ${PROJECT_SOURCE_DIR}/src
-  ${DSO_PATH}/src
-  ${DSO_PATH}/thirdparty/Sophus
+  # ${DSO_PATH}/src
+  # ${DSO_PATH}/thirdparty/Sophus
   ${Pangolin_INCLUDE_DIRS}
   ${EIGEN3_INCLUDE_DIR}
   ${catkin_INCLUDE_DIRS}
